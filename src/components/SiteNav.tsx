@@ -21,7 +21,7 @@ export function SiteNav() {
             <Skull className="h-5 w-5 text-blood" />
           </div>
           <div className="min-w-0 leading-none">
-            <div className="font-display text-lg tracking-widest text-bone truncate">DEAD WEST</div>
+            <div className="font-display text-lg tracking-widest text-bone truncate">CROW</div>
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">RP · CODEX</div>
           </div>
         </Link>
