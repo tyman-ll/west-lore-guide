@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as LoreRouteImport } from './routes/lore'
 import { Route as ControlsRouteImport } from './routes/controls'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RulesIndexRouteImport } from './routes/rules.index'
 
 const LoreRoute = LoreRouteImport.update({
   id: '/lore',
@@ -28,35 +29,44 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RulesIndexRoute = RulesIndexRouteImport.update({
+  id: '/rules/',
+  path: '/rules/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/controls': typeof ControlsRoute
   '/lore': typeof LoreRoute
+  '/rules/': typeof RulesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/controls': typeof ControlsRoute
   '/lore': typeof LoreRoute
+  '/rules': typeof RulesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/controls': typeof ControlsRoute
   '/lore': typeof LoreRoute
+  '/rules/': typeof RulesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/controls' | '/lore'
+  fullPaths: '/' | '/controls' | '/lore' | '/rules/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/controls' | '/lore'
-  id: '__root__' | '/' | '/controls' | '/lore'
+  to: '/' | '/controls' | '/lore' | '/rules'
+  id: '__root__' | '/' | '/controls' | '/lore' | '/rules/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ControlsRoute: typeof ControlsRoute
   LoreRoute: typeof LoreRoute
+  RulesIndexRoute: typeof RulesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rules/': {
+      id: '/rules/'
+      path: '/rules'
+      fullPath: '/rules/'
+      preLoaderRoute: typeof RulesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ControlsRoute: ControlsRoute,
   LoreRoute: LoreRoute,
+  RulesIndexRoute: RulesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
