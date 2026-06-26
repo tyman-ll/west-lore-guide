@@ -1,11 +1,12 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
-import { Skull, Keyboard, BookOpen, Menu, X } from "lucide-react";
+import { Skull, Keyboard, BookOpen, Scale, Menu, X } from "lucide-react";
 
 const links = [
   { to: "/", label: "Салун", icon: Skull },
   { to: "/controls", label: "Управление", icon: Keyboard },
   { to: "/lore", label: "Лор", icon: BookOpen },
+  { to: "/rules", label: "Правила", icon: Scale },
 ] as const;
 
 export function SiteNav() {

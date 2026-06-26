@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as LoreRouteImport } from './routes/lore'
 import { Route as ControlsRouteImport } from './routes/controls'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RulesIndexRouteImport } from './routes/rules.index'
+import { Route as RulesSlugRouteImport } from './routes/rules.$slug'
 
 const LoreRoute = LoreRouteImport.update({
   id: '/lore',
@@ -28,35 +30,53 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RulesIndexRoute = RulesIndexRouteImport.update({
+  id: '/rules/',
+  path: '/rules/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RulesSlugRoute = RulesSlugRouteImport.update({
+  id: '/rules/$slug',
+  path: '/rules/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/controls': typeof ControlsRoute
   '/lore': typeof LoreRoute
+  '/rules/$slug': typeof RulesSlugRoute
+  '/rules/': typeof RulesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/controls': typeof ControlsRoute
   '/lore': typeof LoreRoute
+  '/rules/$slug': typeof RulesSlugRoute
+  '/rules': typeof RulesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/controls': typeof ControlsRoute
   '/lore': typeof LoreRoute
+  '/rules/$slug': typeof RulesSlugRoute
+  '/rules/': typeof RulesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/controls' | '/lore'
+  fullPaths: '/' | '/controls' | '/lore' | '/rules/$slug' | '/rules/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/controls' | '/lore'
-  id: '__root__' | '/' | '/controls' | '/lore'
+  to: '/' | '/controls' | '/lore' | '/rules/$slug' | '/rules'
+  id: '__root__' | '/' | '/controls' | '/lore' | '/rules/$slug' | '/rules/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ControlsRoute: typeof ControlsRoute
   LoreRoute: typeof LoreRoute
+  RulesSlugRoute: typeof RulesSlugRoute
+  RulesIndexRoute: typeof RulesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +102,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rules/': {
+      id: '/rules/'
+      path: '/rules'
+      fullPath: '/rules/'
+      preLoaderRoute: typeof RulesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rules/$slug': {
+      id: '/rules/$slug'
+      path: '/rules/$slug'
+      fullPath: '/rules/$slug'
+      preLoaderRoute: typeof RulesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +123,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ControlsRoute: ControlsRoute,
   LoreRoute: LoreRoute,
+  RulesSlugRoute: RulesSlugRoute,
+  RulesIndexRoute: RulesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
