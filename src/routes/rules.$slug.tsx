@@ -64,7 +64,7 @@ function RulePage() {
       </header>
 
       <ol className="space-y-5">
-        {section.items.map((item, i) => (
+        {section.items.map((item: typeof section.items[number], i: number) => (
           <li
             key={i}
             className="relative border-l-4 border-blood bg-card grain p-5 sm:p-6"
