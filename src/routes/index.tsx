@@ -30,8 +30,8 @@ function Index() {
           </div>
 
           <h1 className="mt-6 font-display text-6xl leading-[0.9] text-bone sm:text-7xl md:text-8xl lg:text-9xl animate-ink">
-            DEAD<br />
-            <span className="text-blood blood-splatter">WEST</span>
+            CROW 2.0<br />
+            <span className="text-blood blood-splatter">2026</span>
           </h1>
 
           <div className="mt-4 h-1 w-32 bg-blood animate-slash" />
@@ -48,7 +48,7 @@ function Index() {
               className="group inline-flex items-center gap-3 bg-blood px-8 py-4 font-mono text-sm uppercase tracking-widest text-bone shadow-[6px_6px_0_0_oklch(0.05_0_0)] transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_oklch(0.05_0_0)]"
             >
               <Keyboard className="h-4 w-4" />
-              К управлению
+              УПРАВЛЕНИЕ И МЕХАНИКИ
               <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
