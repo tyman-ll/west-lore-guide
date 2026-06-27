@@ -4,9 +4,9 @@ import { Skull, Keyboard, BookOpen, Scale, Menu, X } from "lucide-react";
 
 const links = [
   { to: "/", label: "Салун", icon: Skull },
-  { to: "/controls", label: "Управление", icon: Keyboard },
-  { to: "/lore", label: "Лор", icon: BookOpen },
   { to: "/rules", label: "Правила", icon: Scale },
+  { to: "/lore", label: "Лор", icon: BookOpen },
+  { to: "/controls", label: "Управление", icon: Keyboard },
 ] as const;
 
 export function SiteNav() {
