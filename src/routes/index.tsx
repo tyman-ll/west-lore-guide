@@ -74,14 +74,23 @@ function Index() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-14 items-start">
             {/* Left column */}
             <div className="relative">
-              <h1 className="font-display leading-[0.85] text-blood drop-shadow-[0_4px_0_rgba(0,0,0,0.6)] animate-ink">
-                <span className="block text-6xl sm:text-7xl md:text-8xl">CROW 2.0</span>
-                <span className="block mt-2 text-7xl sm:text-8xl md:text-[7.5rem]">2026</span>
+              <h1 className="font-display leading-[0.85] text-blood drop-shadow-[0_4px_0_rgba(0,0,0,0.7)] animate-ink">
+                <span className="block text-6xl sm:text-7xl md:text-8xl" style={{ fontVariant: "small-caps" }}>Crow 2.0</span>
+                <div className="my-2 flex items-center gap-3 text-[#c9a14a]/80">
+                  <span className="h-px flex-1 bg-[#c9a14a]/60" />
+                  <Flourish />
+                  <span className="h-px flex-1 bg-[#c9a14a]/60" />
+                </div>
+                <span className="flex items-center justify-center gap-4 text-7xl sm:text-8xl md:text-[7.5rem]" style={{ fontVariant: "small-caps" }}>
+                  <Flourish />
+                  2026
+                  <Flourish flip />
+                </span>
               </h1>
-              <div className="mt-4 flex items-center gap-3 text-blood/60">
-                <span className="h-px w-12 bg-blood/60" />
-                <span className="font-display tracking-[0.4em] text-sm">EST · MMXXVI</span>
-                <span className="h-px flex-1 bg-blood/60" />
+              <div className="mt-3 flex items-center justify-center gap-3 text-[#c9a14a]/70">
+                <span className="text-xs">❖</span>
+                <span className="font-display tracking-[0.4em] text-xs">EST · MMXXVI</span>
+                <span className="text-xs">❖</span>
               </div>
 
               <p className="mt-8 max-w-xl font-mono text-[15px] leading-relaxed text-bone/90">
@@ -90,10 +99,9 @@ function Index() {
                 погружения в хаос. Раньше, чем ты взведёшь курок — усвой этот устав.
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 max-w-md">
-                <CtaButton href="https://discord.gg/" external>
-                  <DiscordIcon />
-                  <span>Ссылка на дискорд</span>
+              <div className="mt-8 flex flex-col gap-4 max-w-md">
+                <CtaButton href="https://discord.gg/" external icon={<DiscordIcon />}>
+                  Ссылка на дискорд
                 </CtaButton>
                 <CtaButton to="/rules">Правила</CtaButton>
                 <CtaButton href="https://docs.google.com/" external>Подать заявку</CtaButton>
@@ -224,24 +232,28 @@ function CtaButton({
   to,
   href,
   external,
+  icon,
 }: {
   children: React.ReactNode;
   to?: "/rules" | "/controls" | "/lore" | "/";
   href?: string;
   external?: boolean;
+  icon?: React.ReactNode;
 }) {
   const cls =
-    "group relative flex items-center gap-3 px-6 py-3 font-display tracking-[0.2em] text-lg text-[#f3e3c2] " +
-    "bg-gradient-to-b from-[#5a1a14] to-[#2c0c08] border-2 border-[#e8c87a]/40 " +
-    "shadow-[inset_0_1px_0_rgba(232,200,122,0.25),0_4px_0_#0a0504,0_6px_14px_rgba(0,0,0,0.6)] " +
-    "hover:from-[#7a2218] hover:to-[#3a100a] transition-all";
+    "group relative flex items-center justify-center gap-3 px-8 py-4 font-serif tracking-[0.15em] text-lg sm:text-xl text-[#f1dfb8] " +
+    "bg-gradient-to-b from-[#6a1d14] via-[#3d0e08] to-[#1f0604] " +
+    "shadow-[inset_0_1px_0_rgba(232,200,122,0.35),inset_0_-2px_8px_rgba(0,0,0,0.6),0_4px_0_#0a0504,0_8px_18px_rgba(0,0,0,0.7)] " +
+    "ring-1 ring-[#c9a14a]/60 outline outline-1 outline-offset-[3px] outline-[#c9a14a]/30 " +
+    "hover:from-[#7e2418] hover:via-[#4a1109] transition-all";
   const content = (
     <>
-      <Corner className="top-0 left-0" />
-      <Corner className="top-0 right-0 rotate-90" />
-      <Corner className="bottom-0 left-0 -rotate-90" />
-      <Corner className="bottom-0 right-0 rotate-180" />
-      {children}
+      <FancyCorner className="top-1 left-1" />
+      <FancyCorner className="top-1 right-1 rotate-90" />
+      <FancyCorner className="bottom-1 left-1 -rotate-90" />
+      <FancyCorner className="bottom-1 right-1 rotate-180" />
+      {icon && <span className="absolute left-5 top-1/2 -translate-y-1/2 text-[#f1dfb8]">{icon}</span>}
+      <span className="relative">{children}</span>
     </>
   );
   if (to) return <Link to={to} className={cls}>{content}</Link>;
@@ -252,9 +264,12 @@ function CtaButton({
   );
 }
 
-function Corner({ className = "" }: { className?: string }) {
+function FancyCorner({ className = "" }: { className?: string }) {
   return (
-    <span className={`absolute h-2 w-2 border-l-2 border-t-2 border-[#e8c87a]/70 ${className}`} />
+    <svg viewBox="0 0 24 24" className={`absolute h-5 w-5 text-[#c9a14a] ${className}`} aria-hidden>
+      <path d="M2 22 V6 Q2 2 6 2 H22 M6 6 q3 0 5 2 M6 6 q0 3 2 5" stroke="currentColor" strokeWidth="1.2" fill="none" />
+      <circle cx="6" cy="6" r="1.4" fill="currentColor" />
+    </svg>
   );
 }
 
