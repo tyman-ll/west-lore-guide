@@ -74,14 +74,23 @@ function Index() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-14 items-start">
             {/* Left column */}
             <div className="relative">
-              <h1 className="font-display leading-[0.85] text-blood drop-shadow-[0_4px_0_rgba(0,0,0,0.6)] animate-ink">
-                <span className="block text-6xl sm:text-7xl md:text-8xl">CROW 2.0</span>
-                <span className="block mt-2 text-7xl sm:text-8xl md:text-[7.5rem]">2026</span>
+              <h1 className="font-display leading-[0.85] text-blood drop-shadow-[0_4px_0_rgba(0,0,0,0.7)] animate-ink">
+                <span className="block text-6xl sm:text-7xl md:text-8xl" style={{ fontVariant: "small-caps" }}>Crow 2.0</span>
+                <div className="my-2 flex items-center gap-3 text-[#c9a14a]/80">
+                  <span className="h-px flex-1 bg-[#c9a14a]/60" />
+                  <Flourish />
+                  <span className="h-px flex-1 bg-[#c9a14a]/60" />
+                </div>
+                <span className="flex items-center justify-center gap-4 text-7xl sm:text-8xl md:text-[7.5rem]" style={{ fontVariant: "small-caps" }}>
+                  <Flourish />
+                  2026
+                  <Flourish flip />
+                </span>
               </h1>
-              <div className="mt-4 flex items-center gap-3 text-blood/60">
-                <span className="h-px w-12 bg-blood/60" />
-                <span className="font-display tracking-[0.4em] text-sm">EST · MMXXVI</span>
-                <span className="h-px flex-1 bg-blood/60" />
+              <div className="mt-3 flex items-center justify-center gap-3 text-[#c9a14a]/70">
+                <span className="text-xs">❖</span>
+                <span className="font-display tracking-[0.4em] text-xs">EST · MMXXVI</span>
+                <span className="text-xs">❖</span>
               </div>
 
               <p className="mt-8 max-w-xl font-mono text-[15px] leading-relaxed text-bone/90">
@@ -90,10 +99,9 @@ function Index() {
                 погружения в хаос. Раньше, чем ты взведёшь курок — усвой этот устав.
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 max-w-md">
-                <CtaButton href="https://discord.gg/" external>
-                  <DiscordIcon />
-                  <span>Ссылка на дискорд</span>
+              <div className="mt-8 flex flex-col gap-4 max-w-md">
+                <CtaButton href="https://discord.gg/" external icon={<DiscordIcon />}>
+                  Ссылка на дискорд
                 </CtaButton>
                 <CtaButton to="/rules">Правила</CtaButton>
                 <CtaButton href="https://docs.google.com/" external>Подать заявку</CtaButton>
