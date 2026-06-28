@@ -85,9 +85,9 @@ function Index() {
                 погружения в хаос. Раньше, чем ты взведёшь курок — усвой этот устав.
               </p>
 
-              <div className="mt-10 flex flex-wrap items-stretch gap-4">
+              <div className="mt-10 flex flex-nowrap items-stretch gap-3 sm:gap-4 overflow-x-auto">
                 <CtaButton href="https://discord.gg/" external icon={<DiscordIcon />}>
-                  Ссылка на дискорд
+                  Дискорд
                 </CtaButton>
                 <CtaButton to="/rules">Правила</CtaButton>
                 <CtaButton href="https://docs.google.com/" external>
