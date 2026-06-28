@@ -2,6 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import horsePaint from "@/assets/horse-paint.jpg";
+import horseArabian from "@/assets/horse-arabian.jpg";
+import horseMustang from "@/assets/horse-mustang.jpg";
+import horseShire from "@/assets/horse-shire.jpg";
+import horseAppaloosa from "@/assets/horse-appaloosa.jpg";
+import horseWalker from "@/assets/horse-walker.jpg";
 import gMap from "@/assets/g-map.jpg";
 import gPosse from "@/assets/g-posse.jpg";
 import gRevolver from "@/assets/g-revolver.jpg";
@@ -20,7 +25,7 @@ export const Route = createFileRoute("/")({
 
 const CRIMSON = "#960018";
 
-const horses = [horsePaint, horsePaint, horsePaint];
+const horses = [horsePaint, horseArabian, horseMustang, horseShire, horseAppaloosa, horseWalker];
 
 const gallery = [
   { img: gMap, alt: "Карта Блэкуотера" },
@@ -80,9 +85,9 @@ function Index() {
                 погружения в хаос. Раньше, чем ты взведёшь курок — усвой этот устав.
               </p>
 
-              <div className="mt-10 flex flex-wrap items-stretch gap-4">
+              <div className="mt-10 flex flex-nowrap items-stretch gap-3 sm:gap-4 overflow-x-auto">
                 <CtaButton href="https://discord.gg/" external icon={<DiscordIcon />}>
-                  Ссылка на дискорд
+                  Дискорд
                 </CtaButton>
                 <CtaButton to="/rules">Правила</CtaButton>
                 <CtaButton href="https://docs.google.com/" external>
@@ -204,8 +209,8 @@ function CtaButton({
   icon?: React.ReactNode;
 }) {
   const cls =
-    "inline-flex items-center justify-center gap-3 px-6 py-3 min-w-[200px] " +
-    "font-serif font-light tracking-[0.2em] text-sm sm:text-base text-bone " +
+    "inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 whitespace-nowrap shrink-0 " +
+    "font-sans tracking-[0.15em] text-xs sm:text-sm text-bone " +
     "border border-bone/80 bg-transparent " +
     "hover:bg-[#960018] hover:border-[#960018] active:bg-[#960018] active:border-[#960018] " +
     "transition-colors";
