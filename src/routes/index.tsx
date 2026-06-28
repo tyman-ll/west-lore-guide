@@ -209,8 +209,8 @@ function CtaButton({
   icon?: React.ReactNode;
 }) {
   const cls =
-    "inline-flex items-center justify-center gap-3 px-6 py-3 min-w-[200px] " +
-    "font-serif font-light tracking-[0.2em] text-sm sm:text-base text-bone " +
+    "inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 whitespace-nowrap shrink-0 " +
+    "font-sans tracking-[0.15em] text-xs sm:text-sm text-bone " +
     "border border-bone/80 bg-transparent " +
     "hover:bg-[#960018] hover:border-[#960018] active:bg-[#960018] active:border-[#960018] " +
     "transition-colors";
