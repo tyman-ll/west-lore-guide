@@ -2,6 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import horsePaint from "@/assets/horse-paint.jpg";
+import horseArabian from "@/assets/horse-arabian.jpg";
+import horseMustang from "@/assets/horse-mustang.jpg";
+import horseShire from "@/assets/horse-shire.jpg";
+import horseAppaloosa from "@/assets/horse-appaloosa.jpg";
+import horseWalker from "@/assets/horse-walker.jpg";
 import gMap from "@/assets/g-map.jpg";
 import gPosse from "@/assets/g-posse.jpg";
 import gRevolver from "@/assets/g-revolver.jpg";
@@ -20,7 +25,7 @@ export const Route = createFileRoute("/")({
 
 const CRIMSON = "#960018";
 
-const horses = [horsePaint, horsePaint, horsePaint];
+const horses = [horsePaint, horseArabian, horseMustang, horseShire, horseAppaloosa, horseWalker];
 
 const gallery = [
   { img: gMap, alt: "Карта Блэкуотера" },
