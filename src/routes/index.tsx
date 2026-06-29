@@ -169,15 +169,15 @@ function HorseFramedCarousel({
   return (
     <div className="relative w-full max-w-2xl lg:justify-self-end">
       {/* Frame aspect ratio matches the source PNG (~1280x870) */}
-      <div className="relative" style={{ aspectRatio: "1280 / 870" }}>
-        {/* Inner image: positioned inside the frame opening */}
+      <div className="relative" style={{ aspectRatio: "1264 / 848" }}>
+        {/* Inner image: positioned strictly inside the frame opening */}
         <div
           className="absolute overflow-hidden"
           style={{
-            top: "6%",
-            bottom: "10%",
-            left: "8%",
-            right: "8%",
+            top: "13.3%",
+            bottom: "13.4%",
+            left: "17.4%",
+            right: "19.6%",
           }}
         >
           <img
