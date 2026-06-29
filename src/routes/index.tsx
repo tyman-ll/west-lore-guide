@@ -14,6 +14,10 @@ import gPosse from "@/assets/g-posse.jpg";
 import gRevolver from "@/assets/g-revolver.jpg";
 import gWanted from "@/assets/g-wanted.jpg";
 import gLandscape from "@/assets/g-landscape.jpg";
+import gCowboy from "@/assets/g-cowboy.png";
+import gCougar from "@/assets/g-cougar.png";
+import gStreet from "@/assets/g-street.png";
+import gCrow from "@/assets/g-crow.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,6 +34,10 @@ const CRIMSON = "#960018";
 const horses = [horsePaint, horseArabian, horseMustang, horseShire, horseAppaloosa, horseWalker];
 
 const gallery = [
+  { img: gCrow, alt: "Crow — арт игроков" },
+  { img: gCowboy, alt: "Стрелок в плаще" },
+  { img: gCougar, alt: "Пума и ворон" },
+  { img: gStreet, alt: "Ночная улица" },
   { img: gMap, alt: "Карта Блэкуотера" },
   { img: gPosse, alt: "Банда стрелков" },
   { img: gRevolver, alt: "Револьвер" },
@@ -161,15 +169,15 @@ function HorseFramedCarousel({
   return (
     <div className="relative w-full max-w-2xl lg:justify-self-end">
       {/* Frame aspect ratio matches the source PNG (~1280x870) */}
-      <div className="relative" style={{ aspectRatio: "1280 / 870" }}>
-        {/* Inner image: positioned inside the frame opening */}
+      <div className="relative" style={{ aspectRatio: "1264 / 848" }}>
+        {/* Inner image: positioned strictly inside the frame opening */}
         <div
           className="absolute overflow-hidden"
           style={{
-            top: "6%",
-            bottom: "10%",
-            left: "8%",
-            right: "8%",
+            top: "13.3%",
+            bottom: "13.4%",
+            left: "17.4%",
+            right: "19.6%",
           }}
         >
           <img
