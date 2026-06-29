@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import horseFrame from "@/assets/horse-frame.png";
 import horsePaint from "@/assets/horse-paint.jpg";
 import horseArabian from "@/assets/horse-arabian.jpg";
 import horseMustang from "@/assets/horse-mustang.jpg";
@@ -96,43 +98,12 @@ function Index() {
               </div>
             </div>
 
-            {/* Right column — bare horse carousel, shifted right */}
-            <div className="relative lg:pl-12 lg:justify-self-end w-full max-w-xl">
-              <div className="relative aspect-[5/4] bg-[#e8dcc0] overflow-hidden">
-                <div className="absolute inset-0 grain opacity-70 mix-blend-multiply pointer-events-none" />
-                <img
-                  src={horses[slide]}
-                  alt="horse"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <button
-                  onClick={() => setSlide((s) => (s - 1 + total) % total)}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 grid h-10 w-10 place-items-center border border-bone/80 bg-black/60 text-bone hover:bg-[#960018] transition-colors"
-                  aria-label="Назад"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  onClick={() => setSlide((s) => (s + 1) % total)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 grid h-10 w-10 place-items-center border border-bone/80 bg-black/60 text-bone hover:bg-[#960018] transition-colors"
-                  aria-label="Вперёд"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-              </div>
-
-              <div className="mt-5 flex items-center justify-center gap-3">
-                {horses.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setSlide(i)}
-                    aria-label={`Слайд ${i + 1}`}
-                    className="h-3 w-3 rounded-full border border-bone transition-colors"
-                    style={{ backgroundColor: i === slide ? CRIMSON : "transparent" }}
-                  />
-                ))}
-              </div>
-            </div>
+            {/* Right column — framed horse carousel */}
+            <HorseFramedCarousel
+              slide={slide}
+              setSlide={setSlide}
+              total={total}
+            />
           </div>
         </div>
       </section>
@@ -148,24 +119,7 @@ function Index() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-            {gallery.map((g, i) => (
-              <button
-                key={i}
-                onClick={() => setModal(g.img)}
-                className="group relative aspect-[3/4] overflow-hidden border-[6px] border-[#3a2210] bg-[#1a0d08] shadow-[0_8px_20px_rgba(0,0,0,0.6)] transition-transform hover:-translate-y-1"
-                style={{ transform: `rotate(${(i % 2 === 0 ? -1 : 1) * 0.8}deg)` }}
-              >
-                <img
-                  src={g.img}
-                  alt={g.alt}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover sepia-[0.2]"
-                />
-                <div className="absolute inset-0 grain pointer-events-none opacity-50 mix-blend-multiply" />
-              </button>
-            ))}
-          </div>
+          <PlayerGallery onOpen={setModal} />
         </div>
       </section>
 
@@ -191,6 +145,196 @@ function Index() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+function HorseFramedCarousel({
+  slide,
+  setSlide,
+  total,
+}: {
+  slide: number;
+  setSlide: (updater: (s: number) => number) => void;
+  total: number;
+}) {
+  return (
+    <div className="relative w-full max-w-2xl lg:justify-self-end">
+      {/* Frame aspect ratio matches the source PNG (~1280x870) */}
+      <div className="relative" style={{ aspectRatio: "1280 / 870" }}>
+        {/* Inner image: positioned inside the frame opening */}
+        <div
+          className="absolute overflow-hidden"
+          style={{
+            top: "6%",
+            bottom: "10%",
+            left: "8%",
+            right: "8%",
+          }}
+        >
+          <img
+            src={horses[slide]}
+            alt="horse"
+            className="h-full w-full object-cover transition-opacity duration-500"
+          />
+          <div className="absolute inset-0 grain opacity-50 mix-blend-multiply pointer-events-none" />
+        </div>
+
+        {/* Frame overlay */}
+        <img
+          src={horseFrame}
+          alt=""
+          aria-hidden
+          className="relative z-10 w-full h-full pointer-events-none select-none"
+          draggable={false}
+        />
+
+        {/* Click targets over the spur arrows */}
+        <button
+          onClick={() => setSlide((s) => (s - 1 + total) % total)}
+          className="absolute z-20 left-0 top-1/2 -translate-y-1/2 h-[18%] w-[14%]"
+          aria-label="Назад"
+        />
+        <button
+          onClick={() => setSlide((s) => (s + 1) % total)}
+          className="absolute z-20 right-0 top-1/2 -translate-y-1/2 h-[18%] w-[14%]"
+          aria-label="Вперёд"
+        />
+      </div>
+
+      {/* Pips */}
+      <div className="mt-5 flex items-center justify-center gap-3">
+        {horses.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setSlide(() => i)}
+            aria-label={`Слайд ${i + 1}`}
+            className="h-3 w-3 rounded-full border border-bone transition-colors"
+            style={{ backgroundColor: i === slide ? CRIMSON : "transparent" }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PlayerGallery({ onOpen }: { onOpen: (img: string) => void }) {
+  const [mainRef, mainApi] = useEmblaCarousel({ loop: true, align: "center" });
+  const [thumbsRef, thumbsApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    containScroll: false,
+    dragFree: true,
+  });
+  const [selected, setSelected] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!mainApi || !thumbsApi) return;
+    const i = mainApi.selectedScrollSnap();
+    setSelected(i);
+    thumbsApi.scrollTo(i);
+  }, [mainApi, thumbsApi]);
+
+  useEffect(() => {
+    if (!mainApi) return;
+    onSelect();
+    mainApi.on("select", onSelect);
+    mainApi.on("reInit", onSelect);
+  }, [mainApi, onSelect]);
+
+  const scrollPrev = () => mainApi?.scrollPrev();
+  const scrollNext = () => mainApi?.scrollNext();
+  const thumbsPrev = () => thumbsApi?.scrollPrev();
+  const thumbsNext = () => thumbsApi?.scrollNext();
+
+  return (
+    <div>
+      {/* Main carousel */}
+      <div className="relative">
+        <div className="overflow-hidden" ref={mainRef}>
+          <div className="flex">
+            {gallery.map((g, i) => (
+              <div
+                key={i}
+                className="relative min-w-0 shrink-0 grow-0 basis-1/2 sm:basis-1/3 lg:basis-1/4 px-3"
+              >
+                <button
+                  onClick={() => onOpen(g.img)}
+                  className="group relative block aspect-[3/4] w-full overflow-hidden border-[6px] border-[#3a2210] bg-[#1a0d08] shadow-[0_8px_20px_rgba(0,0,0,0.6)] transition-transform hover:-translate-y-1"
+                >
+                  <img
+                    src={g.img}
+                    alt={g.alt}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover sepia-[0.2]"
+                  />
+                  <div className="absolute inset-0 grain pointer-events-none opacity-50 mix-blend-multiply" />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button
+          onClick={scrollPrev}
+          aria-label="Предыдущая"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 grid h-11 w-11 place-items-center border border-bone/70 bg-black/70 text-bone hover:bg-[#960018] hover:border-[#960018] transition-colors"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          onClick={scrollNext}
+          aria-label="Следующая"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 grid h-11 w-11 place-items-center border border-bone/70 bg-black/70 text-bone hover:bg-[#960018] hover:border-[#960018] transition-colors"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
+
+      {/* Thumbnail strip */}
+      <div className="mt-10 relative">
+        <button
+          onClick={thumbsPrev}
+          aria-label="Прокрутить ленту назад"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 grid h-8 w-8 place-items-center border border-bone/60 bg-black/80 text-bone hover:bg-[#960018] hover:border-[#960018] transition-colors"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+        <button
+          onClick={thumbsNext}
+          aria-label="Прокрутить ленту вперёд"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 grid h-8 w-8 place-items-center border border-bone/60 bg-black/80 text-bone hover:bg-[#960018] hover:border-[#960018] transition-colors"
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
+
+        <div className="overflow-hidden mx-12 border-y border-bone/15 py-3" ref={thumbsRef}>
+          <div className="flex gap-3">
+            {gallery.map((g, i) => {
+              const active = i === selected;
+              return (
+                <button
+                  key={i}
+                  onClick={() => mainApi?.scrollTo(i)}
+                  aria-label={`Перейти к ${g.alt}`}
+                  className={
+                    "relative shrink-0 h-16 w-24 sm:h-20 sm:w-28 overflow-hidden transition-all " +
+                    (active
+                      ? "border-2 border-white shadow-[0_0_0_2px_rgba(255,255,255,0.15)] opacity-100"
+                      : "border border-bone/30 opacity-60 hover:opacity-100")
+                  }
+                >
+                  <img
+                    src={g.img}
+                    alt=""
+                    className="h-full w-full object-cover sepia-[0.2]"
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
