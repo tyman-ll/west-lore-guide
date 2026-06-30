@@ -18,8 +18,8 @@ export function SiteNav() {
     <header className="sticky top-0 z-50 border-b border-blood/70 bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-8">
         <Link to="/" className="flex items-center gap-3 min-w-0">
-          <div className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-full bg-bone">
-            <img src={crowLogo} alt="Crow" className="h-9 w-9 object-contain" />
+          <div className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-full bg-bone">
+            <img src={crowLogo} alt="Crow" className="h-12 w-12 object-contain" />
           </div>
           <div className="min-w-0 leading-none hidden sm:block">
             <div className="font-display text-base tracking-[0.25em] text-bone">CROW</div>
