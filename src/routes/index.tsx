@@ -167,17 +167,17 @@ function HorseFramedCarousel({
   total: number;
 }) {
   return (
-    <div className="relative w-full max-w-2xl lg:justify-self-end">
+    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, calc(42rem * 1.3))" }}>
       {/* Frame aspect ratio matches the source PNG (1264x848) */}
       <div className="relative" style={{ aspectRatio: "1264 / 848" }}>
         {/* Inner image: positioned strictly inside the frame opening */}
         <div
           className="absolute overflow-hidden"
           style={{
-            top: "13.33%",
-            bottom: "13.44%",
-            left: "11.23%",
-            right: "13.37%",
+            top: "1.2%",
+            bottom: "1.2%",
+            left: "0.9%",
+            right: "0.9%",
           }}
         >
           <img
@@ -232,8 +232,8 @@ function PlayerGallery({ onOpen }: { onOpen: (img: string) => void }) {
   const [thumbsRef, thumbsApi] = useEmblaCarousel({
     loop: true,
     align: "start",
-    containScroll: false,
     dragFree: true,
+    slidesToScroll: 1,
   });
   const [selected, setSelected] = useState(0);
 
