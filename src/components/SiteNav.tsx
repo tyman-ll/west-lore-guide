@@ -34,7 +34,7 @@ export function SiteNav() {
               <Link
                 key={l.to}
                 to={l.to}
-                className={`font-serif text-sm tracking-[0.35em] transition-colors ${
+                className={`font-serif text-sm tracking-[0.12em] transition-colors ${
                   active ? "text-[#960018]" : "text-bone hover:text-[#960018]"
                 }`}
               >
