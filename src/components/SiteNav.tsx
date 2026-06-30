@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
-import { Skull, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import crowLogo from "@/assets/crow-logo.png";
 
 const links = [
   { to: "/", label: "САЛУН" },
