@@ -122,7 +122,7 @@ function Index() {
         <div className="absolute inset-0 grain pointer-events-none opacity-50" />
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-8 sm:py-20">
           <div className="mb-12 text-center">
-            <div className="font-serif text-2xl sm:text-3xl tracking-[0.25em]" style={{ color: CRIMSON }}>
+            <div className="font-serif text-2xl sm:text-3xl tracking-[0.12em]" style={{ color: CRIMSON }}>
               § 02 &nbsp; ТВОРЧЕСТВО НАШИХ ИГРОКОВ
             </div>
           </div>
@@ -139,10 +139,10 @@ function Index() {
         >
           <div
             className="relative bg-black border border-bone/40"
-            style={{ width: "min(680px, 100%)", height: "min(512px, 90vh)" }}
+            style={{ maxWidth: "90vw", maxHeight: "90vh" }}
             onClick={(e) => e.stopPropagation()}
           >
-            <img src={modal} alt="" className="h-full w-full object-cover" />
+            <img src={modal} alt="" className="block max-w-full max-h-[85vh] object-contain" />
             <button
               onClick={() => setModal(null)}
               aria-label="Закрыть"
@@ -167,7 +167,7 @@ function HorseFramedCarousel({
   total: number;
 }) {
   return (
-    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, calc(42rem * 1.3))" }}>
+    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, calc(42rem * 1.56))" }}>
       {/* Frame aspect ratio matches the source PNG (1264x848) */}
       <div className="relative" style={{ aspectRatio: "1264 / 848" }}>
         {/* Inner image: positioned strictly inside the frame opening */}
