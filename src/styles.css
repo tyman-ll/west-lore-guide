@@ -84,11 +84,13 @@
     pointer-events: none;
     background-image:
       url("/scratch-texture.svg"),
-      repeating-linear-gradient(102deg, transparent 0 42px, rgba(255,255,255,0.045) 43px, transparent 45px),
-      repeating-linear-gradient(6deg, transparent 0 96px, rgba(150,0,24,0.05) 97px, transparent 99px);
-    background-size: 520px 520px, 340px 340px, 460px 460px;
+      repeating-linear-gradient(102deg, transparent 0 38px, rgba(255,255,255,0.06) 39px, transparent 41px),
+      repeating-linear-gradient(78deg, transparent 0 54px, rgba(255,255,255,0.04) 55px, transparent 57px),
+      repeating-linear-gradient(6deg, transparent 0 96px, rgba(150,0,24,0.06) 97px, transparent 99px),
+      repeating-linear-gradient(157deg, transparent 0 71px, rgba(255,255,255,0.035) 72px, transparent 74px);
+    background-size: 520px 520px, 340px 340px, 280px 280px, 460px 460px, 400px 400px;
     background-repeat: repeat;
-    opacity: 0.95;
+    opacity: 1;
     mix-blend-mode: screen;
   }
   body::after {
@@ -98,16 +100,32 @@
     z-index: 2147483647;
     pointer-events: none;
     background-image:
-      linear-gradient(118deg, transparent 8%, rgba(255,255,255,0.18) 8.15%, transparent 8.45%),
-      linear-gradient(82deg, transparent 26%, rgba(255,255,255,0.12) 26.12%, transparent 26.34%),
-      linear-gradient(174deg, transparent 63%, rgba(255,255,255,0.11) 63.08%, transparent 63.28%),
-      radial-gradient(circle at 12% 18%, rgba(255,255,255,0.14) 0 1px, transparent 2px),
-      radial-gradient(circle at 76% 70%, rgba(255,255,255,0.12) 0 1px, transparent 2px),
-      radial-gradient(circle at 54% 38%, rgba(255,255,255,0.10) 0 1px, transparent 2px);
-    background-size: 720px 720px, 610px 610px, 840px 840px, 71px 71px, 97px 97px, 131px 131px;
-    background-position: 0 0, 80px 40px, 140px 90px, 0 0, 30px 20px, 60px 80px;
-    opacity: 0.42;
+      linear-gradient(118deg, transparent 8%, rgba(255,255,255,0.22) 8.15%, transparent 8.45%),
+      linear-gradient(82deg, transparent 26%, rgba(255,255,255,0.16) 26.12%, transparent 26.34%),
+      linear-gradient(174deg, transparent 63%, rgba(255,255,255,0.14) 63.08%, transparent 63.28%),
+      linear-gradient(48deg, transparent 41%, rgba(255,255,255,0.13) 41.1%, transparent 41.3%),
+      linear-gradient(133deg, transparent 78%, rgba(255,255,255,0.11) 78.08%, transparent 78.24%),
+      radial-gradient(circle at 12% 18%, rgba(255,255,255,0.18) 0 1px, transparent 2px),
+      radial-gradient(circle at 76% 70%, rgba(255,255,255,0.15) 0 1px, transparent 2px),
+      radial-gradient(circle at 54% 38%, rgba(255,255,255,0.12) 0 1px, transparent 2px),
+      radial-gradient(circle at 32% 84%, rgba(255,255,255,0.13) 0 1px, transparent 2px);
+    background-size: 720px 720px, 610px 610px, 840px 840px, 560px 560px, 690px 690px, 71px 71px, 97px 97px, 131px 131px, 113px 113px;
+    background-position: 0 0, 80px 40px, 140px 90px, 30px 120px, 200px 60px, 0 0, 30px 20px, 60px 80px, 45px 55px;
+    opacity: 0.55;
     mix-blend-mode: screen;
+  }
+  html::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 2147483646;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 120% 90% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 88%, rgba(0,0,0,0.9) 100%),
+      radial-gradient(circle at 0% 0%, rgba(40,20,10,0.35) 0%, transparent 28%),
+      radial-gradient(circle at 100% 0%, rgba(30,15,8,0.4) 0%, transparent 26%),
+      radial-gradient(circle at 100% 100%, rgba(45,20,10,0.42) 0%, transparent 30%),
+      radial-gradient(circle at 0% 100%, rgba(35,18,10,0.38) 0%, transparent 28%);
   }
   body > * { position: relative; z-index: 1; }
   h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0.02em; }
