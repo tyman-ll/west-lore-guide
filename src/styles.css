@@ -69,7 +69,12 @@
   html, body { background-color: #000; color: var(--color-foreground); }
   body {
     font-family: var(--font-sans);
-    background-color: #000;
+    background:
+      radial-gradient(circle at 18% 24%, rgba(255, 255, 255, 0.07) 0 1px, transparent 2px),
+      radial-gradient(circle at 74% 12%, rgba(255, 255, 255, 0.05) 0 1px, transparent 2px),
+      radial-gradient(circle at 42% 82%, rgba(150, 0, 24, 0.13) 0 1px, transparent 3px),
+      #000;
+    background-size: 93px 93px, 137px 137px, 181px 181px, auto;
   }
   body::before {
     content: "";
@@ -77,10 +82,31 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    background-image: url("/scratch-texture.svg");
-    background-size: 400px 400px;
+    background-image:
+      url("/scratch-texture.svg"),
+      repeating-linear-gradient(102deg, transparent 0 42px, rgba(255,255,255,0.045) 43px, transparent 45px),
+      repeating-linear-gradient(6deg, transparent 0 96px, rgba(150,0,24,0.05) 97px, transparent 99px);
+    background-size: 520px 520px, 340px 340px, 460px 460px;
     background-repeat: repeat;
-    opacity: 0.55;
+    opacity: 0.95;
+    mix-blend-mode: screen;
+  }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    pointer-events: none;
+    background-image:
+      linear-gradient(118deg, transparent 8%, rgba(255,255,255,0.18) 8.15%, transparent 8.45%),
+      linear-gradient(82deg, transparent 26%, rgba(255,255,255,0.12) 26.12%, transparent 26.34%),
+      linear-gradient(174deg, transparent 63%, rgba(255,255,255,0.11) 63.08%, transparent 63.28%),
+      radial-gradient(circle at 12% 18%, rgba(255,255,255,0.14) 0 1px, transparent 2px),
+      radial-gradient(circle at 76% 70%, rgba(255,255,255,0.12) 0 1px, transparent 2px),
+      radial-gradient(circle at 54% 38%, rgba(255,255,255,0.10) 0 1px, transparent 2px);
+    background-size: 720px 720px, 610px 610px, 840px 840px, 71px 71px, 97px 97px, 131px 131px;
+    background-position: 0 0, 80px 40px, 140px 90px, 0 0, 30px 20px, 60px 80px;
+    opacity: 0.42;
     mix-blend-mode: screen;
   }
   body > * { position: relative; z-index: 1; }
