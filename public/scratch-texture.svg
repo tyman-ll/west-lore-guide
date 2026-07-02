@@ -1,23 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="700" viewBox="0 0 700 700">
   <defs>
-    <filter id="noise" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/>
-      <feColorMatrix values="0 0 0 0 0.62 0 0 0 0 0.62 0 0 0 0 0.62 0 0 0 0.18 0"/>
+    <filter id="dust" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" seed="7" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 0.55
+                             0 0 0 0 0.48
+                             0 0 0 0 0.40
+                             0 0 0 0.35 0"/>
+    </filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="2.4" numOctaves="1" seed="3" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 0.60
+                             0 0 0 0 0.55
+                             0 0 0 0 0.50
+                             0 0 0 0.10 0"/>
     </filter>
   </defs>
-  <rect width="100%" height="100%" filter="url(#noise)" opacity="0.6"/>
-  <g stroke="rgba(255,255,255,0.16)" stroke-width="0.5" fill="none" stroke-linecap="round">
-    <path d="M15,25 l70,-3 M130,170 l85,4 M280,35 l95,-2 M25,340 l75,-6 M210,310 l110,5 M150,75 l3,65 M320,140 l2,75 M10,240 l4,55"/>
-    <path d="M340,120 l-60,1 M370,300 l-70,-3 M120,420 l85,5 M5,450 l45,-3"/>
-    <path d="M60,60 l20,8 M260,240 l-15,10 M180,360 l25,-5 M380,80 l-10,12"/>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+  <g opacity="0.35">
+    <ellipse cx="120" cy="180" rx="70" ry="18" filter="url(#dust)"/>
+    <ellipse cx="540" cy="90" rx="90" ry="22" filter="url(#dust)"/>
+    <ellipse cx="620" cy="420" rx="55" ry="30" filter="url(#dust)"/>
+    <ellipse cx="260" cy="560" rx="110" ry="20" filter="url(#dust)"/>
+    <ellipse cx="80" cy="640" rx="50" ry="14" filter="url(#dust)"/>
+    <ellipse cx="440" cy="300" rx="40" ry="12" filter="url(#dust)"/>
   </g>
-  <g fill="rgba(255,255,255,0.14)">
-    <circle cx="65" cy="65" r="0.9"/>
-    <circle cx="180" cy="110" r="0.7"/>
-    <circle cx="300" cy="280" r="1.1"/>
-    <circle cx="370" cy="160" r="0.8"/>
-    <circle cx="110" cy="330" r="1"/>
-    <circle cx="230" cy="40" r="0.6"/>
-    <circle cx="40" cy="190" r="0.8"/>
+  <g stroke="rgba(210,195,170,0.22)" stroke-width="0.6" fill="none" stroke-linecap="round">
+    <path d="M40,120 l180,-6"/>
+    <path d="M310,260 l150,7"/>
+    <path d="M500,60 l160,-4"/>
+    <path d="M60,470 l120,-9"/>
+    <path d="M380,600 l180,8"/>
+    <path d="M250,90 l4,110"/>
+    <path d="M580,220 l3,130"/>
+    <path d="M30,340 l6,90"/>
+    <path d="M660,470 l-4,150"/>
+  </g>
+  <g stroke="rgba(180,150,120,0.18)" stroke-width="0.4" fill="none" stroke-linecap="round">
+    <path d="M150,300 l25,10"/>
+    <path d="M430,150 l-20,14"/>
+    <path d="M300,470 l30,-8"/>
+    <path d="M600,540 l-18,16"/>
+    <path d="M90,240 l22,-4"/>
+  </g>
+  <g fill="rgba(220,205,180,0.28)">
+    <circle cx="95" cy="90" r="1.1"/>
+    <circle cx="270" cy="150" r="0.8"/>
+    <circle cx="480" cy="380" r="1.3"/>
+    <circle cx="620" cy="200" r="0.9"/>
+    <circle cx="180" cy="430" r="1.1"/>
+    <circle cx="360" cy="60" r="0.7"/>
+    <circle cx="50" cy="290" r="0.9"/>
+    <circle cx="530" cy="640" r="1"/>
+    <circle cx="410" cy="510" r="0.8"/>
+    <circle cx="140" cy="580" r="1.2"/>
   </g>
 </svg>

@@ -78,9 +78,9 @@
     z-index: 0;
     pointer-events: none;
     background-image: url("/scratch-texture.svg");
-    background-size: 400px 400px;
+    background-size: 700px 700px;
     background-repeat: repeat;
-    opacity: 0.55;
+    opacity: 0.9;
     mix-blend-mode: screen;
   }
   body > * { position: relative; z-index: 1; }
@@ -148,3 +148,8 @@
   100% { transform: scaleX(1); transform-origin: left; }
 }
 @utility animate-slash { animation: slash 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
+
+@keyframes horse-fade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
