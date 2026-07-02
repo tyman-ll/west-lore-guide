@@ -167,7 +167,7 @@ function HorseFramedCarousel({
   total: number;
 }) {
   return (
-    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, calc(42rem * 2.184))" }}>
+    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, 72rem)" }}>
       {/* Elegant fading progress line — resets on each slide change */}
       <div className="mb-3 flex items-center justify-center gap-3">
         <span className="h-px w-2 bg-bone/40" />
