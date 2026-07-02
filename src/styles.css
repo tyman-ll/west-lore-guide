@@ -148,3 +148,8 @@
   100% { transform: scaleX(1); transform-origin: left; }
 }
 @utility animate-slash { animation: slash 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
+
+@keyframes horse-fade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
