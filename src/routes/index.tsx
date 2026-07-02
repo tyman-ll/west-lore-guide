@@ -167,7 +167,19 @@ function HorseFramedCarousel({
   total: number;
 }) {
   return (
-    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, calc(42rem * 1.56))" }}>
+    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, calc(42rem * 2.184))" }}>
+      {/* Elegant fading progress line — resets on each slide change */}
+      <div className="mb-3 flex items-center justify-center gap-3">
+        <span className="h-px w-2 bg-bone/40" />
+        <div className="relative h-px w-full max-w-[70%] overflow-hidden bg-bone/10">
+          <div
+            key={slide}
+            className="absolute inset-y-0 left-0 bg-gradient-to-r from-transparent via-bone/80 to-transparent"
+            style={{ width: "100%", animation: "horse-fade 5s linear forwards" }}
+          />
+        </div>
+        <span className="h-px w-2 bg-bone/40" />
+      </div>
       {/* Frame aspect ratio matches the source PNG (1264x848) */}
       <div className="relative" style={{ aspectRatio: "1264 / 848" }}>
         {/* Inner image: positioned strictly inside the frame opening */}
