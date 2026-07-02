@@ -167,7 +167,7 @@ function HorseFramedCarousel({
   total: number;
 }) {
   return (
-    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, 72rem)" }}>
+    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, 50rem)" }}>
       {/* Elegant fading progress line — resets on each slide change */}
       <div className="mb-3 flex items-center justify-center gap-3">
         <span className="h-px w-2 bg-bone/40" />
@@ -244,7 +244,6 @@ function PlayerGallery({ onOpen }: { onOpen: (img: string) => void }) {
   const [thumbsRef, thumbsApi] = useEmblaCarousel({
     loop: true,
     align: "start",
-    dragFree: true,
     slidesToScroll: 1,
   });
   const [selected, setSelected] = useState(0);
