@@ -68,8 +68,8 @@ function Index() {
       <section className="relative overflow-hidden border-b border-blood/40">
         <div className="absolute inset-0 grain pointer-events-none" />
 
-        <div className="relative mx-auto max-w-7xl px-4 pt-12 pb-16 sm:px-8 lg:pt-16 lg:pb-24">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20 items-start">
+        <div className="relative mx-auto max-w-[112rem] px-4 pt-12 pb-16 sm:px-8 lg:pt-16 lg:pb-24">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.9fr)] lg:gap-16 items-start">
             {/* Left column */}
             <div className="text-left">
               <h1 className="font-display leading-[0.9] animate-ink">
@@ -167,7 +167,7 @@ function HorseFramedCarousel({
   total: number;
 }) {
   return (
-    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, calc(42rem * 2.184))" }}>
+    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, 72rem)" }}>
       {/* Elegant fading progress line — resets on each slide change */}
       <div className="mb-3 flex items-center justify-center gap-3">
         <span className="h-px w-2 bg-bone/40" />
