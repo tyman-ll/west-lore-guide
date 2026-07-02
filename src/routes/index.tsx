@@ -244,7 +244,6 @@ function PlayerGallery({ onOpen }: { onOpen: (img: string) => void }) {
   const [thumbsRef, thumbsApi] = useEmblaCarousel({
     loop: true,
     align: "start",
-    dragFree: true,
     slidesToScroll: 1,
   });
   const [selected, setSelected] = useState(0);
