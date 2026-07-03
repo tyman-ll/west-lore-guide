@@ -71,7 +71,7 @@ function Index() {
         <div className="relative mx-auto max-w-[112rem] px-4 pt-12 pb-16 sm:px-8 lg:pt-16 lg:pb-24">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.9fr)] lg:gap-16 items-start">
             {/* Left column */}
-            <div className="text-left">
+            <div className="text-left pl-2 sm:pl-4">
               <h1 className="font-display leading-[0.9] animate-ink">
                 <span className="block text-6xl sm:text-7xl md:text-8xl text-bone">
                   CROW RP
@@ -89,7 +89,7 @@ function Index() {
                 <span className="text-xs">❖</span>
               </div>
 
-              <p className="mt-8 max-w-xl font-serif font-light text-[15px] sm:text-base leading-relaxed text-bone">
+              <p className="mt-12 max-w-xl font-serif font-light text-[15px] sm:text-base leading-relaxed text-bone">
                 Добро пожаловать на дикие земли, путник. Здесь нет маршалов из
                 Вашингтона, но есть Кодекс, который держит этот фронтир от
                 погружения в хаос. Раньше, чем ты взведёшь курок — усвой этот устав.
@@ -167,7 +167,7 @@ function HorseFramedCarousel({
   total: number;
 }) {
   return (
-    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, 50rem)" }}>
+    <div className="relative w-full lg:justify-self-end" style={{ maxWidth: "min(100%, 40rem)" }}>
       {/* Elegant fading progress line — resets on each slide change */}
       <div className="mb-3 flex items-center justify-center gap-3">
         <span className="h-px w-2 bg-bone/40" />
