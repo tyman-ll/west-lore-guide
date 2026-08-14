@@ -35,7 +35,7 @@ export const Route = createFileRoute("/rules/$slug")({
 });
 
 function RulePage() {
-  const { section } = Route.useLoaderData();
+  const { section } = Route.useLoaderData() as { section: (typeof RULES_SECTIONS)[number] };
   const idx = RULES_SECTIONS.findIndex((s) => s.slug === section.slug);
   const prev = RULES_SECTIONS[idx - 1];
   const next = RULES_SECTIONS[idx + 1];
